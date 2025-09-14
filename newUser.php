@@ -16,7 +16,7 @@
    <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST["create_account"])) {
-            $username = $_POST["username"];
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $password = $_POST["password"];
             $confirm_password = $_POST["confirm_password"];
 
