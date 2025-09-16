@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Rule: /notes/5 → index.php?id=5
+RewriteRule ^edit/([A-Za-z0-9]+)$ editNotes.php?key=$1 [L]
+
+# Rule: /home → addTodo.php
+RewriteRule ^home$ addTodo.php [L]
+
+
+RewriteRule ^signup$ signup.php [L]
+
+RewriteRule ^process$ process.php [L]
+
+RewriteRule ^login$ index.php [L]

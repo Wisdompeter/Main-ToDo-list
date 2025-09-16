@@ -1,0 +1,151 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(106, 17, 203, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(106, 17, 203, 0);
+            }
+        }
+        
+        h1 {
+            color: #2d3355;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 32px;
+        }
+        
+        .success-message {
+            color: #5a5f7a;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        
+        .username-display {
+            background: #f8f9fc;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .username-display span {
+            color: #6a11cb;
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: #8c90a4;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 576px) {
+            .success-container {
+                padding: 40px 25px;
+            }
+            
+            .success-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .success-message {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 14px 26px;
+                font-size: 16px;
+            }
+        }
+    
