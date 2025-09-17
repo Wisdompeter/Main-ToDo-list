@@ -81,7 +81,13 @@
                             <?php  echo "Title and content cannot be Empty"; ?>
                         </div>
                         <?php
-                }
+                }  elseif (strlen($title) < 4 || strlen($body) < 4) {
+                     ?>
+                        <div class="error">
+                            <?php echo "Title and Content Must be More than 5 characters"; ?>
+                        </div>
+                        <?php
+               }
                  else {
 
                      ?>
@@ -101,10 +107,10 @@
         }
     }
 
-    if (isset($_POST['unique_key'])) {
-        $unique_key = mysqli_real_escape_string($conn, $_POST['unique_key']);
+    if (isset($_POST['id'])) {
+        $id = mysqli_real_escape_string($conn, $_POST['id']);
         $user_id = $_SESSION['user_id'];
-        $sql = "DELETE FROM notes WHERE unique_key = $unique_key AND user_id = $user_id";
+        $sql = "DELETE FROM notes WHERE id = $id AND user_id = $user_id";
         mysqli_query($conn, $sql);
 
          ?>
@@ -166,7 +172,7 @@
 
                     </button>
                 <form action="" method="post">
-                    <input type="hidden" name="unique_key" value="<?php echo $row['unique_key']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
                     <input class="del-space" name="delete" type="submit" value="DELETE">
                 </form>

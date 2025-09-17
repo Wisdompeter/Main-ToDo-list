@@ -55,8 +55,8 @@
                             <?php echo "Please re-enter your password"; ?>
                         </div>
                         <?php
-                } elseif (strlen($password) < 6) {
-                  echo "<div class='error'>Password must be at least 6 characters long.</div>";
+                } elseif (strlen($password) < 6 || strlen($username) < 6) {
+                  echo "<div class='error'>Password and Username must be at least 6 characters long.</div>";
                           } 
                      else {
                    
@@ -96,7 +96,7 @@
     }
 ?>
 
-        <form action="signup.php" method="POST" onsubmit="return validateForm()">
+        <form action="signup" method="POST" onsubmit="return validateForm()">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required placeholder="Choose a username">

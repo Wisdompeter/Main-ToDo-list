@@ -2,19 +2,28 @@
 session_start();
 include("./DATABASE/database.php");
 
- if(empty($_SESSION['username'])) {
-            header("Location: login");
-            exit();
-    }
+// ✅ Dynamic base path
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    $base = '/CLONE/Main-ToDo-list/';
+} else {
+    $base = '/';
+}
+
+// ✅ Check login
+if (empty($_SESSION['username'])) {
+    header("Location: " . $base . "login");
+    exit();
+}
 
 if (empty($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: " . $base . "login");
     exit();
 }
 
 $unique_key = isset($_GET['key']) ? mysqli_real_escape_string($conn, $_GET['key']) : '';
 $user_id = $_SESSION['user_id'];
 
+// ✅ Handle update
 if (isset($_POST['update'])) {
     $title = mysqli_real_escape_string($conn, $_POST['title']);
     $body  = mysqli_real_escape_string($conn, $_POST['body']);
@@ -25,16 +34,15 @@ if (isset($_POST['update'])) {
     mysqli_query($conn, $sql);
 
     $_SESSION['tupdate'] = 'update';
-    header("Location: /CLONE/Main-ToDo-list/home");
+    header("Location: " . $base . "home");
     exit();
 }
 
+// ✅ Fetch note
 $sql = "SELECT * FROM notes WHERE unique_key = '$unique_key' AND user_id = $user_id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +50,9 @@ $row = mysqli_fetch_assoc($result);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Note</title>
-    <link rel="stylesheet" href="/CLONE/Main-ToDo-list/STYLES/addTodo.css">
 
+    <!-- ✅ Universal CSS path -->
+    <link rel="stylesheet" href="<?= $base ?>STYLES/addTodo.css">
 </head>
 <body>
     <?php if (!empty($row)) : ?>
